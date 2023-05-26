@@ -8,7 +8,7 @@ const MovieService = () => {
   };
 
   const getMovie = (omdbId: string) => {
-    return baseService.get('', { params: { omdbId } });
+    return baseService.get(`/${omdbId}`);
   };
 
   return {
