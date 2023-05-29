@@ -8,7 +8,7 @@ import MovieCard from '@/components/MovieCard';
 import { MagnifyingGlassIcon, PlayCircleIcon } from '@heroicons/react/24/solid';
 
 const MovieSearch = () => {
-  const [result, setResult] = useState<any[]>([]);
+  const [results, setResults] = useState<any[]>([]);
   const [query, setQuery] = useState('');
   const [lastQueries, setLastQueries] = useState<string[]>([]);
   const [loaded, setLoaded] = useState(false);
@@ -22,8 +22,11 @@ const MovieSearch = () => {
   const queryMovies = (query: string) => {
     if (query.trim().length) {
       MovieService.getMovies(query)
-        .then((res) => setResult(res.data.content))
-        .catch(() => setResult([]))
+        .then((res) => {
+          setResults(res.data.content);
+          document.getElementById('search-btn')?.focus();
+        })
+        .catch(() => setResults([]))
         .finally(() => {
           setLoaded(true);
           setLastQueries([...lastQueries, query]);
@@ -47,7 +50,7 @@ const MovieSearch = () => {
             />
           </div>
 
-          <button onClick={() => queryMovies(query)}>
+          <button onClick={() => queryMovies(query)} id="search-btn">
             <PlayCircleIcon className="text-yellow-400 w-12"></PlayCircleIcon>
           </button>
         </div>
@@ -74,8 +77,8 @@ const MovieSearch = () => {
 
       {loaded ? (
         <ul className="results__container mt-12">
-          {result.length ? (
-            result.map((r, i) => <MovieCard movie={r} key={i}></MovieCard>)
+          {results.length ? (
+            results.map((r, i) => <MovieCard movie={r} key={i}></MovieCard>)
           ) : (
             <p className="text-white font-bold">
               Query did not return any results.
