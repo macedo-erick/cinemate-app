@@ -14,7 +14,7 @@ const MovieCard = ({ movie, fullDate = false }: MovieCardProps) => {
 
   return (
     <>
-      <div className="card__wrapper flex flex-col gap-4">
+      <li className="card__wrapper flex flex-col gap-4">
         <Link href={'/movie/' + movie.imdbId} className="h-max">
           <img
             src={movie.poster != 'N/A' ? movie.poster : noImageLink}
@@ -45,7 +45,7 @@ const MovieCard = ({ movie, fullDate = false }: MovieCardProps) => {
             <></>
           )}
         </div>
-      </div>
+      </li>
     </>
   );
 };

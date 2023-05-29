@@ -18,16 +18,16 @@ const UpcomingMovies = () => {
   return (
     <>
       {loaded ? (
-        <>
+        <section>
           <h1 className="text-yellow-500 text-2xl font-extrabold my-12">
             Upcoming
           </h1>
-          <div className="results__container mb-12">
+          <ul className="results__container mb-12">
             {movies.map((m, i) => (
               <MovieCard movie={m} fullDate={true} key={i}></MovieCard>
             ))}
-          </div>
-        </>
+          </ul>
+        </section>
       ) : (
         <></>
       )}

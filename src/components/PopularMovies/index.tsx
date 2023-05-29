@@ -19,16 +19,16 @@ const PopularMovies = () => {
   return (
     <>
       {loaded ? (
-        <>
+        <section>
           <h1 className="text-yellow-500 text-2xl font-extrabold my-12">
             Popular
           </h1>
-          <div className="results__container">
+          <ul className="results__container">
             {movies.map((m, i) => (
               <MovieCard movie={m} key={i}></MovieCard>
             ))}
-          </div>
-        </>
+          </ul>
+        </section>
       ) : (
         <></>
       )}
