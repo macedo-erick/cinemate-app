@@ -15,24 +15,35 @@ const MovieCard = ({ movie, fullDate = false }: MovieCardProps) => {
   return (
     <>
       <div className="card__wrapper flex flex-col gap-4">
-        <Link href={'/movies/' + movie.imdbId} className="h-max">
+        <Link href={'/movie/' + movie.imdbId} className="h-max">
           <img
             src={movie.poster != 'N/A' ? movie.poster : noImageLink}
             alt={movie.title}
           />
         </Link>
 
-        <h1 className="text-white font-bold">{movie.title}</h1>
+        <h1 className="text-white font-bold h-12">{movie.title}</h1>
 
-        <div className="extra__info flex flex-wrap gap-2">
-          <span className="text-yellow-500 text-xs font-bold bg-slate-950 p-2 rounded-lg h-8">
+        <div className="flex flex-wrap gap-2">
+          <span className="text-yellow-500 text-xs font-bold bg-slate-950 p-2 rounded-lg">
             {fullDate ? movie.releasedDate : movie.year}
           </span>
-          {movie.genre.map((g) => (
-            <span className="text-yellow-500 text-xs text-center font-bold bg-slate-950 p-2 rounded-lg h-8">
+          {movie.genre.map((g, i) => (
+            <span
+              className="text-yellow-500 text-xs text-center font-bold bg-slate-950 p-2 rounded-lg"
+              key={i}
+            >
               {g}
             </span>
           ))}
+
+          {movie.runtime ? (
+            <span className="text-yellow-500 text-xs text-center font-bold bg-slate-950 p-2 rounded-lg">
+              {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}min
+            </span>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>

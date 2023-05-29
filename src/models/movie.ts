@@ -12,4 +12,5 @@ export interface Movie {
   rating: string;
   imdbId: string;
   year: string;
+  runtime: number;
 }

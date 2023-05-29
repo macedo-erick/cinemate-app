@@ -18,11 +18,11 @@ const MovieSearch = () => {
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === 'Enter') {
-      queryMovies();
+      queryMovies(query);
     }
   };
 
-  const queryMovies = () => {
+  const queryMovies = (query: string) => {
     if (query.trim().length) {
       MovieService.getMovies(query)
         .then((res) => setResult(res.data.content))
@@ -30,7 +30,6 @@ const MovieSearch = () => {
         .finally(() => {
           setLoaded(true);
           setLastQueries([...lastQueries, query]);
-          setQuery('');
         });
     }
   };
@@ -53,7 +52,7 @@ const MovieSearch = () => {
 
           <button
             className="w-16 bg-yellow-400 rounded-lg"
-            onClick={queryMovies}
+            onClick={() => queryMovies(query)}
           >
             <PlayArrowIcon className="text-4xl"></PlayArrowIcon>
           </button>
@@ -61,8 +60,12 @@ const MovieSearch = () => {
 
         {lastQueries.length ? (
           <div className="last__queries__container flex flex-wrap gap-3">
-            {Array.from(new Set(lastQueries)).map((l) => (
-              <span className="text-yellow-500 text-sm text-center font-bold bg-slate-950 shadow-lg p-3 px-5 rounded-lg">
+            {Array.from(new Set(lastQueries)).map((l, i) => (
+              <span
+                className="text-yellow-500 text-sm text-center font-bold bg-slate-950 shadow-lg p-3 px-5 rounded-lg hover:cursor-pointer"
+                key={i}
+                onClick={(event: any) => queryMovies(event.target.innerHTML)}
+              >
                 {l}
               </span>
             ))}
@@ -83,9 +86,13 @@ const MovieSearch = () => {
               </p>
             )}
           </div>
-          <div className="pagination__container mt-12 flex justify-center">
-            <Pagination count={20}></Pagination>
-          </div>
+          {result.length ? (
+            <div className="pagination__container mt-12 flex justify-center">
+              <Pagination count={20}></Pagination>
+            </div>
+          ) : (
+            <></>
+          )}
         </>
       ) : (
         <></>
