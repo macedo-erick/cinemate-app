@@ -1,14 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import SearchIcon from '@mui/icons-material/Search';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import './style.scss';
 
 import MovieService from '@/services/movie-service';
 import MovieCard from '@/components/MovieCard';
-import Pagination from '@mui/material/Pagination';
 
 const MovieSearch = () => {
   const [result, setResult] = useState<any[]>([]);
@@ -39,7 +36,9 @@ const MovieSearch = () => {
       <div className="grid gap-3 items-center justify-center">
         <div className="flex gap-4">
           <div className="search__container flex items-center rounded-lg p-5 bg-slate-950">
-            <SearchIcon className="text-slate-400"></SearchIcon>
+            <span className="material-symbols-outlined text-slate-400">
+              search
+            </span>
             <input
               type="text"
               className="px-3 text-white font-bold bg-slate-950 focus:outline-none"
@@ -51,10 +50,12 @@ const MovieSearch = () => {
           </div>
 
           <button
-            className="w-16 bg-yellow-400 rounded-lg"
+            className="w-16 bg-yellow-400 rounded-full grid place-items-center"
             onClick={() => queryMovies(query)}
           >
-            <PlayArrowIcon className="text-4xl"></PlayArrowIcon>
+            <span className="material-symbols-outlined text-3xl">
+              play_arrow
+            </span>
           </button>
         </div>
 
@@ -64,7 +65,10 @@ const MovieSearch = () => {
               <span
                 className="text-yellow-500 text-sm text-center font-bold bg-slate-950 shadow-lg p-3 px-5 rounded-lg hover:cursor-pointer"
                 key={i}
-                onClick={(event: any) => queryMovies(event.target.innerHTML)}
+                onClick={(event: any) => {
+                  setQuery(event.target.innerHTML);
+                  queryMovies(event.target.innerHTML);
+                }}
               >
                 {l}
               </span>
@@ -76,24 +80,15 @@ const MovieSearch = () => {
       </div>
 
       {loaded ? (
-        <>
-          <div className="results__container mt-12">
-            {result.length ? (
-              result.map((r, i) => <MovieCard movie={r} key={i}></MovieCard>)
-            ) : (
-              <p className="text-white font-bold">
-                Query did not return any results.
-              </p>
-            )}
-          </div>
+        <div className="results__container mt-12">
           {result.length ? (
-            <div className="pagination__container mt-12 flex justify-center">
-              <Pagination count={20}></Pagination>
-            </div>
+            result.map((r, i) => <MovieCard movie={r} key={i}></MovieCard>)
           ) : (
-            <></>
+            <p className="text-white font-bold">
+              Query did not return any results.
+            </p>
           )}
-        </>
+        </div>
       ) : (
         <></>
       )}
