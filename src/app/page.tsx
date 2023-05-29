@@ -1,11 +1,15 @@
-import MovieSearch from '@/components/MovieSearch/page';
+import MovieSearch from '@/components/MovieSearch';
+import UpcomingMovies from '@/components/UpcomingMovies';
+import PopularMovies from '@/components/PopularMovies';
 
-export default function Home() {
+const Home = () => {
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <MovieSearch></MovieSearch>
-      </main>
+      <MovieSearch></MovieSearch>
+      <PopularMovies></PopularMovies>
+      <UpcomingMovies></UpcomingMovies>
     </>
   );
-}
+};
+
+export default Home;

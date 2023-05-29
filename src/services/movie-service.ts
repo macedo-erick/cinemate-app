@@ -1,20 +1,36 @@
 import BaseService from '@/services/base-service';
+import { Page } from '@/models/page.model';
+import { Movie } from '@/models/movie';
+import { AxiosResponse } from 'axios';
 
 const MovieService = () => {
-  const baseService = BaseService('movies').instance;
+  const baseService = BaseService('movies');
 
-  const getMovies = (movieName: string, page = 1) => {
+  const getMovies = (
+    movieName: string,
+    page = 1
+  ): Promise<AxiosResponse<Page<Movie>>> => {
     return baseService.get('', { params: { movieName, page } });
   };
 
-  const getMovie = (omdbId: string) => {
-    return baseService.get(`/${omdbId}`);
+  const getMovie = (imdbId: string) => {
+    return baseService.get(`/detail/${imdbId}`);
+  };
+
+  const getUpcomingMovies = () => {
+    return baseService.get(`/upcoming`);
+  };
+
+  const getPopularMovies = () => {
+    return baseService.get(`/popular`);
   };
 
   return {
     getMovies,
     getMovie,
+    getUpcomingMovies,
+    getPopularMovies,
   };
 };
 
-export default MovieService;
+export default MovieService();
