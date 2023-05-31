@@ -11,7 +11,8 @@ const MovieSearch = () => {
   const [results, setResults] = useState<any[]>([]);
   const [query, setQuery] = useState('');
   const [lastQueries, setLastQueries] = useState<string[]>([]);
-  const [loaded, setLoaded] = useState(true);
+  const [loaded, setLoaded] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === 'Enter') {
@@ -21,7 +22,7 @@ const MovieSearch = () => {
 
   const queryMovies = (query: string) => {
     if (query.trim().length) {
-      setLoaded(false);
+      setLoading(true);
       setLastQueries([...lastQueries, query]);
 
       MovieService.getMovies(query)
@@ -31,6 +32,7 @@ const MovieSearch = () => {
         })
         .catch(() => setResults([]))
         .finally(() => {
+          setLoading(false);
           setLoaded(true);
         });
     }
@@ -55,7 +57,7 @@ const MovieSearch = () => {
           <button onClick={() => queryMovies(query)} id="search-btn">
             <PlayCircleIcon
               className={`text-yellow-400 w-12 ${
-                !loaded ? 'animate-spin' : ''
+                loading ? 'animate-spin' : ''
               } `}
             ></PlayCircleIcon>
           </button>
