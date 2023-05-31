@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import MovieService from '@/services/movie-service';
-import { Movie } from '@/models/movie';
+import { MovieModel } from '@/models/movie.model';
+import RelatedMovies from '@/components/RelatedMovies';
+import Videos from '@/components/Videos';
 
 interface MovieProps {
-  params: { id: string };
+  params: { id: number };
 }
 
 const Movie = ({ params }: MovieProps) => {
-  const [movie, setMovie] = useState<Movie>();
+  const [movie, setMovie] = useState<MovieModel>();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -67,6 +69,9 @@ const Movie = ({ params }: MovieProps) => {
               </div>
             </article>
           </section>
+
+          <RelatedMovies id={params.id}></RelatedMovies>
+          <Videos id={params.id}></Videos>
         </>
       ) : (
         <></>

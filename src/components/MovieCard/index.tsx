@@ -1,33 +1,35 @@
-import { Movie } from '@/models/movie';
+import { MovieModel } from '@/models/movie.model';
 
 import './style.scss';
 import Link from 'next/link';
 
 interface MovieCardProps {
-  movie: Movie;
+  movie: MovieModel;
   fullDate?: boolean;
+  animate?: boolean;
 }
 
-const MovieCard = ({ movie, fullDate = false }: MovieCardProps) => {
-  const noImageLink =
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png';
-
+const MovieCard = ({
+  movie,
+  fullDate = false,
+  animate = true,
+}: MovieCardProps) => {
   return (
     <>
-      <li className="card__wrapper flex flex-col gap-4">
-        <Link href={'/movie/' + movie.imdbId} className="h-max">
-          <img
-            src={movie.poster != 'N/A' ? movie.poster : noImageLink}
-            alt={movie.title}
-            className="rounded"
-          />
+      <li
+        className={`card__wrapper flex flex-col gap-4 select-none ${
+          animate ? 'animate' : ''
+        }`}
+      >
+        <Link href={'/movie/' + movie.id} className="h-max">
+          <img src={movie.poster} alt={movie.title} className="rounded" />
         </Link>
 
         <h1 className="text-white font-bold h-12">{movie.title}</h1>
 
         <div className="flex flex-wrap gap-2">
           <span className="chip">
-            {fullDate ? movie.releasedDate : movie.year}
+            {fullDate ? movie.releasedDate : movie.year || 'N/A'}
           </span>
           {movie.genres.map((g, i) => (
             <span className="chip" key={i}>

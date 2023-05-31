@@ -1,0 +1,9 @@
+.play__btn {
+  &:hover {
+    background-color: rgb(30, 41, 59, 0.8);
+
+    svg {
+      color: rgb(255, 255, 255, 0.6);
+    }
+  }
+}

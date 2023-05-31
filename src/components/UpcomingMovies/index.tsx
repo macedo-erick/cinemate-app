@@ -2,16 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import MovieService from '@/services/movie-service';
-import { Movie } from '@/models/movie';
+import { MovieModel } from '@/models/movie.model';
 import MovieCard from '@/components/MovieCard';
 
 const UpcomingMovies = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<MovieModel[]>([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     MovieService.getUpcomingMovies()
-      .then((res) => setMovies(res.data))
+      .then((res) => setMovies(res.data.results))
       .finally(() => setLoaded(true));
   }, []);
 
@@ -24,7 +24,12 @@ const UpcomingMovies = () => {
           </h1>
           <ul className="results__container mb-12">
             {movies.map((m, i) => (
-              <MovieCard movie={m} fullDate={true} key={i}></MovieCard>
+              <MovieCard
+                movie={m}
+                animate={true}
+                fullDate={true}
+                key={i}
+              ></MovieCard>
             ))}
           </ul>
         </section>

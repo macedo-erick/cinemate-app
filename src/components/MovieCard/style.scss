@@ -6,7 +6,9 @@
     height: 30rem;
   }
 
-  &:hover {
-    transform: translate3d(0.2rem, -0.8rem, 0);
+  &.animate {
+    &:hover {
+      transform: translate3d(0.2rem, -0.8rem, 0);
+    }
   }
 }

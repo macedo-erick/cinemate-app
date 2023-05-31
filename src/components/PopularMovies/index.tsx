@@ -2,17 +2,17 @@
 
 import { useEffect, useState } from 'react';
 
-import { Movie } from '@/models/movie';
+import { MovieModel } from '@/models/movie.model';
 import MovieService from '@/services/movie-service';
 import MovieCard from '@/components/MovieCard';
 
 const PopularMovies = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<MovieModel[]>([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     MovieService.getPopularMovies()
-      .then((res) => setMovies(res.data))
+      .then((res) => setMovies(res.data.results))
       .finally(() => setLoaded(true));
   }, []);
 

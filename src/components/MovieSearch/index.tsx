@@ -6,9 +6,10 @@ import MovieService from '@/services/movie-service';
 import MovieCard from '@/components/MovieCard';
 
 import { MagnifyingGlassIcon, PlayCircleIcon } from '@heroicons/react/24/solid';
+import { MovieModel } from '@/models/movie.model';
 
 const MovieSearch = () => {
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<MovieModel[]>([]);
   const [query, setQuery] = useState('');
   const [lastQueries, setLastQueries] = useState<string[]>([]);
   const [loaded, setLoaded] = useState(false);
@@ -27,7 +28,7 @@ const MovieSearch = () => {
 
       MovieService.getMovies(query)
         .then((res) => {
-          setResults(res.data.content);
+          setResults(res.data.results);
           document.getElementById('search-btn')?.focus();
         })
         .catch(() => setResults([]))
