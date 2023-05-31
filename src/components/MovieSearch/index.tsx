@@ -11,7 +11,7 @@ const MovieSearch = () => {
   const [results, setResults] = useState<any[]>([]);
   const [query, setQuery] = useState('');
   const [lastQueries, setLastQueries] = useState<string[]>([]);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === 'Enter') {
@@ -21,6 +21,9 @@ const MovieSearch = () => {
 
   const queryMovies = (query: string) => {
     if (query.trim().length) {
+      setLoaded(false);
+      setLastQueries([...lastQueries, query]);
+
       MovieService.getMovies(query)
         .then((res) => {
           setResults(res.data.content);
@@ -29,7 +32,6 @@ const MovieSearch = () => {
         .catch(() => setResults([]))
         .finally(() => {
           setLoaded(true);
-          setLastQueries([...lastQueries, query]);
         });
     }
   };
@@ -51,7 +53,11 @@ const MovieSearch = () => {
           </div>
 
           <button onClick={() => queryMovies(query)} id="search-btn">
-            <PlayCircleIcon className="text-yellow-400 w-12"></PlayCircleIcon>
+            <PlayCircleIcon
+              className={`text-yellow-400 w-12 ${
+                !loaded ? 'animate-spin' : ''
+              } `}
+            ></PlayCircleIcon>
           </button>
         </div>
 
@@ -61,9 +67,9 @@ const MovieSearch = () => {
               <li
                 className="text-yellow-500 text-sm text-center font-bold bg-slate-950 shadow-lg p-3 px-5 rounded-lg hover:cursor-pointer"
                 key={i}
-                onClick={(event: any) => {
-                  setQuery(event.target.innerHTML);
-                  queryMovies(event.target.innerHTML);
+                onClick={(e) => {
+                  setQuery(e.currentTarget.innerHTML);
+                  queryMovies(e.currentTarget.innerHTML);
                 }}
               >
                 {l}

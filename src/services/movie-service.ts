@@ -13,7 +13,7 @@ const MovieService = () => {
     return baseService.get('', { params: { movieName, page } });
   };
 
-  const getMovie = (imdbId: string) => {
+  const getMovie = (imdbId: string): Promise<AxiosResponse<Movie>> => {
     return baseService.get(`/detail/${imdbId}`);
   };
 

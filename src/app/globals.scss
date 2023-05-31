@@ -13,3 +13,18 @@
 .w-120 {
   width: 30rem;
 }
+
+.chip {
+  color: rgb(234, 179, 8);
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+
+  background-color: #000;
+
+  width: max-content;
+}
