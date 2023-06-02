@@ -1,19 +1,20 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import MovieService from '@/services/movie-service';
 import MovieCard from '@/components/MovieCard';
 
 import { MagnifyingGlassIcon, PlayCircleIcon } from '@heroicons/react/24/solid';
-import { Movie } from '@/models/movie';
+import { LastQueriesContext } from '@/context/LastQueriesContext';
+import { PageContext } from '@/context/PageContext';
 
 const MovieSearch = () => {
-  const [results, setResults] = useState<Movie[]>([]);
   const [query, setQuery] = useState('');
-  const [lastQueries, setLastQueries] = useState<string[]>([]);
-  const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const { page, setPage } = useContext(PageContext);
+  const { lastQueries, setLastQueries } = useContext(LastQueriesContext);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === 'Enter') {
@@ -24,17 +25,19 @@ const MovieSearch = () => {
   const queryMovies = (query: string) => {
     if (query.trim().length) {
       setLoading(true);
-      setLastQueries([...lastQueries, query]);
+      setLastQueries([...(lastQueries || []), query]);
 
       MovieService.getMovies(query)
         .then((res) => {
-          setResults(res.data.results);
+          setPage(res.data);
+
+          console.log(page);
+
           document.getElementById('search-btn')?.focus();
         })
-        .catch(() => setResults([]))
+        .catch(() => setPage([]))
         .finally(() => {
           setLoading(false);
-          setLoaded(true);
         });
     }
   };
@@ -64,7 +67,7 @@ const MovieSearch = () => {
           </button>
         </div>
 
-        {lastQueries.length ? (
+        {lastQueries?.length ? (
           <ul className="flex flex-wrap w-120 gap-3">
             {Array.from(new Set(lastQueries)).map((l, i) => (
               <li
@@ -75,7 +78,7 @@ const MovieSearch = () => {
                   queryMovies(e.currentTarget.innerHTML);
                 }}
               >
-                {l}
+                {l as string}
               </li>
             ))}
           </ul>
@@ -84,19 +87,15 @@ const MovieSearch = () => {
         )}
       </div>
 
-      {loaded ? (
-        <ul className="results__container mt-12">
-          {results.length ? (
-            results.map((r, i) => <MovieCard movie={r} key={i}></MovieCard>)
-          ) : (
-            <p className="text-white font-bold">
-              Query did not return any results.
-            </p>
-          )}
-        </ul>
-      ) : (
-        <></>
-      )}
+      <ul className="results__container mt-12">
+        {page?.results.length ? (
+          page.results.map((r, i) => <MovieCard movie={r} key={i}></MovieCard>)
+        ) : (
+          <p className="text-white font-bold">
+            Query did not return any results.
+          </p>
+        )}
+      </ul>
     </section>
   );
 };

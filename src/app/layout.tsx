@@ -1,6 +1,8 @@
 import './globals.scss';
 import { Poppins } from 'next/font/google';
 import Header from '@/components/Header';
+import { LastQueriesProvider } from '@/context/LastQueriesContext';
+import { PageProvider } from '@/context/PageContext';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -21,9 +23,10 @@ export default function RootLayout({
       <body className={poppins.className}>
         <Header></Header>
         <main className="bg-slate-800 flex min-h-screen flex-col px-12 pt-32">
-          {children}
+          <PageProvider>
+            <LastQueriesProvider>{children}</LastQueriesProvider>
+          </PageProvider>
         </main>
-        {/*<Footer></Footer>*/}
       </body>
     </html>
   );
