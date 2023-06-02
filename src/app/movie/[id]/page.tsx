@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import MovieService from '@/services/movie-service';
-import { MovieModel } from '@/models/movie.model';
+import { Movie } from '@/models/movie';
 import RelatedMovies from '@/components/RelatedMovies';
 import Videos from '@/components/Videos';
 
@@ -11,7 +11,7 @@ interface MovieProps {
 }
 
 const Movie = ({ params }: MovieProps) => {
-  const [movie, setMovie] = useState<MovieModel>();
+  const [movie, setMovie] = useState<Movie>();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {

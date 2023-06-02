@@ -1,10 +1,10 @@
-import { MovieModel } from '@/models/movie.model';
+import { Movie } from '@/models/movie';
 
 import './style.scss';
 import Link from 'next/link';
 
 interface MovieCardProps {
-  movie: MovieModel;
+  movie: Movie;
   fullDate?: boolean;
   animate?: boolean;
 }

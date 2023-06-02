@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Page } from '@/models/page.model';
-import { MovieModel } from '@/models/movie.model';
+import { Movie } from '@/models/movie';
 import MovieService from '@/services/movie-service';
 import MovieCard from '@/components/MovieCard';
 
@@ -12,7 +12,7 @@ interface RelatedMoviesProps {
 }
 
 const RelatedMovies = ({ id }: RelatedMoviesProps) => {
-  const [related, setRelated] = useState<Page<MovieModel>>();
+  const [related, setRelated] = useState<Page<Movie>>();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {

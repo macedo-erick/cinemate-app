@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import MovieService from '@/services/movie-service';
-import { MovieModel } from '@/models/movie.model';
+import { Movie } from '@/models/movie';
 import MovieCard from '@/components/MovieCard';
 
 const UpcomingMovies = () => {
-  const [movies, setMovies] = useState<MovieModel[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {

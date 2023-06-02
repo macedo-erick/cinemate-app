@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react';
 
-import { MovieModel } from '@/models/movie.model';
+import { Movie } from '@/models/movie';
 import MovieService from '@/services/movie-service';
 import MovieCard from '@/components/MovieCard';
 
 const PopularMovies = () => {
-  const [movies, setMovies] = useState<MovieModel[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
