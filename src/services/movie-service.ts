@@ -3,6 +3,7 @@ import { Page } from '@/models/page.model';
 import { Movie } from '@/models/movie';
 import { AxiosResponse } from 'axios';
 import { Video } from '@/models/video.model';
+import { Review } from '@/models/review.model';
 
 const MovieService = () => {
   const baseService = BaseService('movies');
@@ -28,6 +29,10 @@ const MovieService = () => {
     return baseService.get(`/${id}/videos`);
   };
 
+  const getMovieReviews = (id: number): Promise<AxiosResponse<Review[]>> => {
+    return baseService.get(`/${id}/reviews`);
+  };
+
   const getUpcomingMovies = (): Promise<AxiosResponse<Page<Movie>>> => {
     return baseService.get(`/upcoming`);
   };
@@ -39,10 +44,11 @@ const MovieService = () => {
   return {
     getMovies,
     getMovie,
-    getUpcomingMovies,
-    getPopularMovies,
+    getMovieReviews,
     getRelatedMovies,
     getMovieVideos,
+    getUpcomingMovies,
+    getPopularMovies,
   };
 };
 

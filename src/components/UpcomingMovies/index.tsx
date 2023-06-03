@@ -19,9 +19,7 @@ const UpcomingMovies = () => {
     <>
       {loaded ? (
         <section>
-          <h1 className="text-yellow-500 text-2xl font-extrabold my-12">
-            Upcoming
-          </h1>
+          <h1 className="section__title">Upcoming</h1>
           <ul className="results__container mb-12">
             {movies.map((m, i) => (
               <MovieCard

@@ -5,6 +5,7 @@ import MovieService from '@/services/movie-service';
 import { Movie } from '@/models/movie';
 import RelatedMovies from '@/components/RelatedMovies';
 import Videos from '@/components/Videos';
+import Reviews from '@/components/Reviews';
 
 interface MovieProps {
   params: { id: number };
@@ -52,26 +53,35 @@ const Movie = ({ params }: MovieProps) => {
                 <></>
               )}
 
-              <div className="flex gap-2">
-                {movie?.genres.map((g, i) => (
-                  <span className="chip" key={i}>
-                    {g}
-                  </span>
-                ))}
-              </div>
+              {movie?.genres.length ? (
+                <div className="flex gap-2">
+                  {movie.genres.map((g, i) => (
+                    <span className="chip" key={i}>
+                      {g}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <></>
+              )}
 
-              <div className="flex gap-2">
-                {movie?.languages.map((l, i) => (
-                  <span className="chip" key={i}>
-                    {l}
-                  </span>
-                ))}
-              </div>
+              {movie?.languages.length ? (
+                <div className="flex gap-2">
+                  {movie.languages.map((l, i) => (
+                    <span className="chip" key={i}>
+                      {l}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <></>
+              )}
             </article>
           </section>
 
           <RelatedMovies id={params.id}></RelatedMovies>
           <Videos id={params.id}></Videos>
+          <Reviews id={params.id}></Reviews>
         </>
       ) : (
         <></>

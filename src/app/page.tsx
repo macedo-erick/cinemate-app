@@ -1,5 +1,3 @@
-'use client';
-
 import MovieSearch from '@/components/MovieSearch';
 import UpcomingMovies from '@/components/UpcomingMovies';
 import PopularMovies from '@/components/PopularMovies';

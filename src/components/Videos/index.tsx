@@ -44,10 +44,8 @@ const Videos = ({ id }: VideosProps) => {
     <>
       {loaded && videos?.length ? (
         <>
-          <section className="mb-8">
-            <h1 className="text-yellow-500 text-2xl font-extrabold my-12">
-              Videos
-            </h1>
+          <section>
+            <h1 className="section__title">Videos</h1>
 
             <Swiper slidesPerView={4} spaceBetween={30} loop={true}>
               {videos?.map((v, i) => (
@@ -62,12 +60,14 @@ const Videos = ({ id }: VideosProps) => {
                     <img
                       src={v.thumbnail}
                       alt="thumbnail"
-                      className="rounded"
+                      className="thumbnail rounded"
                     />
 
                     <Modal
+                      disableAutoFocus
                       open={open}
                       onClose={handleClose}
+                      className="video__player"
                       sx={{ 'background-color': 'rgba(0, 0, 0, 0.1)' }}
                     >
                       <Box sx={style}>

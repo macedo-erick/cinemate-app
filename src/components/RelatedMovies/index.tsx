@@ -26,9 +26,7 @@ const RelatedMovies = ({ id }: RelatedMoviesProps) => {
       {loaded && related?.results.length ? (
         <>
           <section className="mb-8">
-            <h1 className="text-yellow-500 text-2xl font-extrabold my-12">
-              Related
-            </h1>
+            <h1 className="section__title">Related</h1>
 
             <Swiper slidesPerView={5} spaceBetween={20} loop={true}>
               {related?.results.map((m, i) => (
