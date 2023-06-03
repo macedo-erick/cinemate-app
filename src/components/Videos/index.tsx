@@ -26,7 +26,7 @@ const Videos = ({ id }: VideosProps) => {
     <>
       {loaded && videos?.length ? (
         <>
-          <section>
+          <section className="mb-8">
             <h1 className="section__title">Videos</h1>
 
             <Swiper slidesPerView={4} spaceBetween={40} loop={true}>

@@ -5,6 +5,7 @@ import { Box } from '@mui/material';
 import { useState } from 'react';
 
 import './style.scss';
+import Image from 'next/image';
 
 interface VideoProps {
   video: Video;
@@ -34,7 +35,15 @@ const Video = ({ video: v }: VideoProps) => {
         >
           <PlayIcon />
         </button>
-        <img src={v.thumbnail} alt="thumbnail" className="thumbnail rounded" />
+
+        <Image
+          src={v.thumbnail}
+          alt="thumbnail"
+          className="thumbnail rounded"
+          width={1920}
+          height={1080}
+          quality={100}
+        />
 
         {open ? (
           <Modal

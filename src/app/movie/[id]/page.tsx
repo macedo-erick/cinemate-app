@@ -6,6 +6,7 @@ import { Movie } from '@/models/movie';
 import RelatedMovies from '@/components/RelatedMovies';
 import Videos from '@/components/Videos';
 import Reviews from '@/components/Reviews';
+import Image from 'next/image';
 
 interface MovieProps {
   params: { id: number };
@@ -29,7 +30,14 @@ const Movie = ({ params }: MovieProps) => {
         <>
           <section className="flex wrap gap-12 items-center justify-center py-36">
             <article className="w-1/5">
-              <img src={movie?.poster} alt="Poster" className="rounded" />
+              <Image
+                src={movie?.poster!}
+                alt={movie?.title!}
+                width={1920}
+                height={1080}
+                quality={100}
+                className="h-full w-full rounded"
+              ></Image>
             </article>
 
             <article className="w-2/6 flex flex-col gap-6">

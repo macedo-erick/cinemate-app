@@ -2,6 +2,9 @@ import { Movie } from '@/models/movie';
 
 import './style.scss';
 import Link from 'next/link';
+import Image from 'next/image';
+
+// import Image from '@/components/Image';
 
 interface MovieCardProps {
   movie: Movie;
@@ -22,7 +25,14 @@ const MovieCard = ({
         }`}
       >
         <Link href={'/movie/' + movie.id} className="h-max">
-          <img src={movie.poster} alt={movie.title} className="rounded" />
+          <Image
+            src={movie.poster}
+            alt={movie.title}
+            width={1920}
+            height={1080}
+            quality={100}
+            className="rounded"
+          ></Image>
         </Link>
 
         <h1 className="text-white font-bold h-12">{movie.title}</h1>
