@@ -8,7 +8,7 @@ interface ReviewProps {
 const ReviewCard = ({ review }: ReviewProps) => {
   return (
     <>
-      <li className="flex gap-7 bg-white p-4 rounded shadow-lg">
+      <li className="flex gap-7 bg-white px-4 py-6 rounded shadow-lg">
         <Avatar src={review.avatar} sx={{ width: 56, height: 56 }}></Avatar>
         <div className="flex flex-col gap-2">
           <div className="flex gap-4">
