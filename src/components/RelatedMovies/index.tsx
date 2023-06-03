@@ -25,7 +25,7 @@ const RelatedMovies = ({ id }: RelatedMoviesProps) => {
     <>
       {loaded && related?.results.length ? (
         <>
-          <section className="mb-8">
+          <section className="mb-12">
             <h1 className="section__title">Related</h1>
 
             <Swiper slidesPerView={5} spaceBetween={20} loop={true}>

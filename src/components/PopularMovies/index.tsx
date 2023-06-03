@@ -19,7 +19,7 @@ const PopularMovies = () => {
   return (
     <>
       {loaded ? (
-        <section>
+        <section className="mb-12">
           <h1 className="section__title">Popular</h1>
           <ul className="results__container">
             {movies.map((m, i) => (

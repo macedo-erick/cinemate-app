@@ -87,17 +87,19 @@ const MovieSearch = () => {
         )}
       </div>
 
-      <ul className="results__container mt-12">
-        {page?.results.length ? (
-          page.results.map((r, i) => <MovieCard movie={r} key={i}></MovieCard>)
-        ) : page?.results ? (
-          <p className="text-white font-bold">
-            Query did not return any results.
-          </p>
-        ) : (
-          <></>
-        )}
-      </ul>
+      {page?.results.length ? (
+        <ul className="results__container mt-12">
+          {page.results.map((r, i) => (
+            <MovieCard movie={r} key={i}></MovieCard>
+          ))}
+        </ul>
+      ) : page?.results ? (
+        <p className="text-white font-bold">
+          Query did not return any results.
+        </p>
+      ) : (
+        <></>
+      )}
     </section>
   );
 };

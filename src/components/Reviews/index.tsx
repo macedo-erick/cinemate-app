@@ -21,7 +21,7 @@ const Reviews = ({ id }: ReviewProps) => {
     <>
       {loaded && reviews.length ? (
         <>
-          <section className="mb-8">
+          <section className="mb-12">
             <h1 className="section__title">Reviews</h1>
 
             <ul className="flex flex-col gap-8">
