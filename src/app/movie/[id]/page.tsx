@@ -27,7 +27,7 @@ const Movie = ({ params }: MovieProps) => {
     <>
       {loaded ? (
         <>
-          <section className="flex flex wrap gap-12 items-center justify-center py-32">
+          <section className="flex wrap gap-12 items-center justify-center py-36">
             <article className="w-1/5">
               <img src={movie?.poster} alt="Poster" className="rounded" />
             </article>
@@ -88,10 +88,6 @@ const Movie = ({ params }: MovieProps) => {
       )}
     </>
   );
-
-  // return (
-
-  // );
 };
 
 export default Movie;
