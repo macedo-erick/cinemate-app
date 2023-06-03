@@ -46,13 +46,7 @@ const Video = ({ video: v }: VideoProps) => {
         />
 
         {open ? (
-          <Modal
-            disableAutoFocus
-            open={open}
-            onClose={handleClose}
-            className="video__player"
-            sx={{ 'background-color': 'rgba(0, 0, 0, 0.1)' }}
-          >
+          <Modal disableAutoFocus open={open} onClose={handleClose}>
             <Box sx={style}>
               <iframe src={v.video} width={900} height={500}></iframe>
             </Box>
