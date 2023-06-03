@@ -47,7 +47,7 @@ const Videos = ({ id }: VideosProps) => {
           <section>
             <h1 className="section__title">Videos</h1>
 
-            <Swiper slidesPerView={4} spaceBetween={30} loop={true}>
+            <Swiper slidesPerView={4} spaceBetween={40} loop={true}>
               {videos?.map((v, i) => (
                 <SwiperSlide key={i}>
                   <div className="grid">
