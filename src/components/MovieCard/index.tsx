@@ -3,8 +3,7 @@ import { Movie } from '@/models/movie';
 import './style.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-
-// import Image from '@/components/Image';
+import { blurUrl } from '@/util';
 
 interface MovieCardProps {
   movie: Movie;
@@ -31,7 +30,10 @@ const MovieCard = ({
             width={1920}
             height={1080}
             quality={100}
-            className="rounded"
+            className="rounded animate-pulse"
+            placeholder="blur"
+            blurDataURL={blurUrl}
+            onLoadingComplete={(e) => e.classList.remove('animate-pulse')}
           ></Image>
         </Link>
 

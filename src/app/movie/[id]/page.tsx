@@ -7,6 +7,7 @@ import RelatedMovies from '@/components/RelatedMovies';
 import Videos from '@/components/Videos';
 import Reviews from '@/components/Reviews';
 import Image from 'next/image';
+import { blurUrl } from '@/util';
 
 interface MovieProps {
   params: { id: number };
@@ -22,7 +23,7 @@ const Movie = ({ params }: MovieProps) => {
         setMovie(res.data);
       })
       .finally(() => setLoaded(true));
-  }, []);
+  }, [params.id]);
 
   return (
     <>
@@ -36,7 +37,10 @@ const Movie = ({ params }: MovieProps) => {
                 width={1920}
                 height={1080}
                 quality={100}
-                className="h-full w-full rounded"
+                className="h-full w-full rounded animate-pulse"
+                placeholder="blur"
+                blurDataURL={blurUrl}
+                onLoadingComplete={(e) => e.classList.remove('animate-pulse')}
               ></Image>
             </article>
 

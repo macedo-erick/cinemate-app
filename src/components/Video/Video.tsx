@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 import './style.scss';
 import Image from 'next/image';
+import { blurUrl } from '@/util';
 
 interface VideoProps {
   video: Video;
@@ -39,10 +40,13 @@ const Video = ({ video: v }: VideoProps) => {
         <Image
           src={v.thumbnail}
           alt="thumbnail"
-          className="thumbnail rounded"
           width={1920}
           height={1080}
           quality={100}
+          className="thumbnail rounded animate-pulse"
+          placeholder="blur"
+          blurDataURL={blurUrl}
+          onLoadingComplete={(e) => e.classList.remove('animate-pulse')}
         />
 
         {open ? (
