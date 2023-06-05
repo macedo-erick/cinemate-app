@@ -5,8 +5,7 @@ import { Box } from '@mui/material';
 import { useState } from 'react';
 
 import './style.scss';
-import Image from 'next/image';
-import { blurUrl } from '@/util';
+import ImageWithFallback from '@/components/Image';
 
 interface VideoProps {
   video: Video;
@@ -37,17 +36,7 @@ const Video = ({ video: v }: VideoProps) => {
           <PlayIcon />
         </button>
 
-        <Image
-          src={v.thumbnail}
-          alt="thumbnail"
-          width={1920}
-          height={1080}
-          quality={100}
-          className="thumbnail rounded animate-pulse"
-          placeholder="blur"
-          blurDataURL={blurUrl}
-          onLoadingComplete={(e) => e.classList.remove('animate-pulse')}
-        />
+        <ImageWithFallback src={v.thumbnail}></ImageWithFallback>
 
         {open ? (
           <Modal disableAutoFocus open={open} onClose={handleClose}>
