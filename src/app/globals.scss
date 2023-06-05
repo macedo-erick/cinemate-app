@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --secondary-color: rgb(234, 179, 8);
+}
+
 .results__container {
   display: grid;
 
@@ -15,7 +19,7 @@
 }
 
 .chip {
-  color: rgb(234, 179, 8);
+  color: var(--secondary-color);
   text-align: center;
   font-size: 0.75rem;
   line-height: 1rem;
@@ -30,10 +34,18 @@
 }
 
 .section__title {
-  color: rgb(234, 179, 8);
+  color: var(--secondary-color);
   font-weight: 800;
   font-size: 1.5rem;
   line-height: 2rem;
 
   margin-bottom: 3rem;
+}
+
+.MuiRating-iconFilled {
+  color: var(--secondary-color);
+}
+
+.MuiRating-iconEmpty {
+  color: rgb(71 85 105) !important;
 }
