@@ -11,7 +11,7 @@ const ReviewCard = ({ review }: ReviewProps) => {
       <li className="flex gap-7 bg-white px-4 py-6 rounded shadow-lg">
         <Avatar src={review.avatar} sx={{ width: 56, height: 56 }}></Avatar>
         <div className="flex flex-col gap-2">
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
             <p className="text-black text-base text-justify font-bold">
               {review.author}
             </p>
