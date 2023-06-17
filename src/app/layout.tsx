@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google';
 import Header from '@/components/Header';
 import { LastQueriesProvider } from '@/context/LastQueriesContext';
 import { PageProvider } from '@/context/PageContext';
+import { QueryProvider } from '@/context/QueryContext';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -23,9 +24,11 @@ export default function RootLayout({
       <body className={poppins.className}>
         <Header></Header>
         <main className="bg-slate-800 flex min-h-screen flex-col px-12 pt-32">
-          <PageProvider>
-            <LastQueriesProvider>{children}</LastQueriesProvider>
-          </PageProvider>
+          <QueryProvider>
+            <LastQueriesProvider>
+              <PageProvider>{children}</PageProvider>
+            </LastQueriesProvider>
+          </QueryProvider>
         </main>
       </body>
     </html>

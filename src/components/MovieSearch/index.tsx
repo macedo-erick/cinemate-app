@@ -8,17 +8,18 @@ import MovieCard from '@/components/MovieCard';
 import { MagnifyingGlassIcon, PlayCircleIcon } from '@heroicons/react/24/solid';
 import { LastQueriesContext } from '@/context/LastQueriesContext';
 import { PageContext } from '@/context/PageContext';
+import { QueryContext } from '@/context/QueryContext';
 
 const MovieSearch = () => {
-  const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { page, setPage } = useContext(PageContext);
+  const { query, setQuery } = useContext(QueryContext);
   const { lastQueries, setLastQueries } = useContext(LastQueriesContext);
+  const { page, setPage } = useContext(PageContext);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === 'Enter') {
-      queryMovies(query);
+      queryMovies(query as string);
     }
   };
 
@@ -43,7 +44,7 @@ const MovieSearch = () => {
   };
 
   return (
-    <section>
+    <section className="mb-12">
       <div className="grid gap-3 items-center justify-center">
         <div className="flex gap-4">
           <div className="flex items-center w-120 p-5 rounded-lg bg-slate-950">
@@ -58,7 +59,7 @@ const MovieSearch = () => {
             />
           </div>
 
-          <button onClick={() => queryMovies(query)} id="search-btn">
+          <button onClick={() => queryMovies(query as string)} id="search-btn">
             <PlayCircleIcon
               className={`text-yellow-400 w-12 ${
                 loading ? 'animate-spin' : ''
