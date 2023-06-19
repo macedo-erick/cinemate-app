@@ -12,3 +12,11 @@
     }
   }
 }
+
+@media (min-width: 1280px) {
+  .thumbnail {
+    min-width: 20rem;
+    max-height: 13rem;
+
+  }
+}

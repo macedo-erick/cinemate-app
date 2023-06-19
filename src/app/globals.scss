@@ -31,6 +31,9 @@
   background-color: #000;
 
   width: max-content;
+
+  display: grid;
+  place-items: center;
 }
 
 .section__title {
