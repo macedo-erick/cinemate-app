@@ -30,7 +30,7 @@ const Movie = ({ params }: MovieProps) => {
       {loaded ? (
         <>
           <section className="flex wrap gap-12 items-center justify-center py-36">
-            <article className="w-1/5">
+            <article className="xl:w-2/6 2xl:w-1/5">
               <Image
                 src={movie?.poster!}
                 alt={movie?.title!}

@@ -15,6 +15,15 @@ const RelatedMovies = ({ id }: RelatedMoviesProps) => {
   const [related, setRelated] = useState<Page<Movie>>();
   const [loaded, setLoaded] = useState(false);
 
+  const breakPoints = {
+    768: {
+      slidesPerView: 3
+    },
+    1366: {
+      slidesPerView: 5
+    }
+  }
+
   useEffect(() => {
     MovieService.getRelatedMovies(id)
       .then((res) => setRelated(res.data))
@@ -28,7 +37,7 @@ const RelatedMovies = ({ id }: RelatedMoviesProps) => {
           <section className="mb-12">
             <h1 className="section__title">Related</h1>
 
-            <Swiper slidesPerView={5} spaceBetween={20} loop={true}>
+            <Swiper spaceBetween={20} loop={true} breakpoints={breakPoints}>
               {related?.results.map((m, i) => (
                 <SwiperSlide key={i}>
                   <MovieCard movie={m} animate={false}></MovieCard>

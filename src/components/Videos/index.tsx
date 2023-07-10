@@ -16,6 +16,15 @@ const Videos = ({ id }: VideosProps) => {
   const [videos, setVideos] = useState<VideoModel[]>();
   const [loaded, setLoaded] = useState(false);
 
+  const breakPoints = {
+    768: {
+      slidesPerView: 3
+    },
+    1366: {
+      slidesPerView: 4
+    }
+  }
+
   useEffect(() => {
     MovieService.getMovieVideos(id)
       .then((res) => setVideos(res.data))
@@ -29,7 +38,7 @@ const Videos = ({ id }: VideosProps) => {
           <section className="mb-12">
             <h1 className="section__title">Videos</h1>
 
-            <Swiper slidesPerView={4} spaceBetween={40} loop={true}>
+            <Swiper spaceBetween={40} loop={true} breakpoints={breakPoints}>
               {videos?.map((v, i) => (
                 <SwiperSlide key={i}>
                   <Video video={v}></Video>

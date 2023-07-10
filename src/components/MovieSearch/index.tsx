@@ -59,7 +59,7 @@ const MovieSearch = () => {
             />
           </div>
 
-          <button onClick={() => queryMovies(query as string)} id="search-btn">
+          <button onClick={() => queryMovies(query as string)} id="search-btn" className="focus:outline-none">
             <PlayCircleIcon
               className={`text-yellow-400 w-12 ${
                 loading ? 'animate-spin' : ''
