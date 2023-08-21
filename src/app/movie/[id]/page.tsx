@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import MovieService from '@/services/movie-service';
-import { Movie } from '@/models/movie';
+import { Movie } from '@/utils/models/movie';
 import RelatedMovies from '@/components/RelatedMovies';
 import Videos from '@/components/Videos';
 import Reviews from '@/components/Reviews';
 import Image from 'next/image';
-import { blurUrl } from '@/util';
+import { blurUrl } from '@/utils/util';
 
 interface MovieProps {
   params: { id: number };

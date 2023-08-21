@@ -1,9 +1,9 @@
 import BaseService from '@/services/base-service';
-import { Page } from '@/models/page.model';
-import { Movie } from '@/models/movie';
+import { Page } from '@/utils/models/page.model';
+import { Movie } from '@/utils/models/movie';
 import { AxiosResponse } from 'axios';
-import { Video } from '@/models/video.model';
-import { Review } from '@/models/review.model';
+import { Video } from '@/utils/models/video.model';
+import { Review } from '@/utils/models/review.model';
 
 const MovieService = () => {
   const baseService = BaseService('movies');

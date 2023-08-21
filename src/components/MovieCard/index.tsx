@@ -1,9 +1,9 @@
-import { Movie } from '@/models/movie';
+import { Movie } from '@/utils/models/movie';
 
 import './style.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-import { blurUrl } from '@/util';
+import { blurUrl } from '@/utils/util';
 
 interface MovieCardProps {
   movie: Movie;

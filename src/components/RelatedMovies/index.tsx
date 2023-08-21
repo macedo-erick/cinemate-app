@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Page } from '@/models/page.model';
-import { Movie } from '@/models/movie';
+import { Page } from '@/utils/models/page.model';
+import { Movie } from '@/utils/models/movie';
 import MovieService from '@/services/movie-service';
 import MovieCard from '@/components/MovieCard';
 

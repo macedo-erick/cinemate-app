@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import MovieService from '@/services/movie-service';
-import { Movie } from '@/models/movie';
+import { Movie } from '@/utils/models/movie';
 import MovieCard from '@/components/MovieCard';
 
 const UpcomingMovies = () => {

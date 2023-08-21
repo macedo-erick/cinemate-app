@@ -1,4 +1,4 @@
-import { Video } from '@/models/video.model';
+import { Video } from '@/utils/models/video.model';
 import { PlayIcon } from '@heroicons/react/24/solid';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/material';

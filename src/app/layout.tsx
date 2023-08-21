@@ -1,9 +1,9 @@
 import './globals.scss';
 import { Poppins } from 'next/font/google';
 import Header from '@/components/Header';
-import { LastQueriesProvider } from '@/context/LastQueriesContext';
-import { PageProvider } from '@/context/PageContext';
-import { QueryProvider } from '@/context/QueryContext';
+import { LastQueriesProvider } from '@/utils/context/LastQueriesContext';
+import { PageProvider } from '@/utils/context/PageContext';
+import { QueryProvider } from '@/utils/context/QueryContext';
 
 const poppins = Poppins({
   subsets: ['latin'],

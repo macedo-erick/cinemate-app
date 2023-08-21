@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import MovieService from '@/services/movie-service';
-import { Video as VideoModel } from '@/models/video.model';
+import { Video as VideoModel } from '@/utils/models/video.model';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
