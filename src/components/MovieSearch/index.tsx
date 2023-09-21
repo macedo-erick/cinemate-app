@@ -32,8 +32,6 @@ const MovieSearch = () => {
         .then((res) => {
           setPage(res.data);
 
-          console.log(page);
-
           document.getElementById('search-btn')?.focus();
         })
         .catch(() => setPage([]))
@@ -59,7 +57,11 @@ const MovieSearch = () => {
             />
           </div>
 
-          <button onClick={() => queryMovies(query as string)} id="search-btn" className="focus:outline-none">
+          <button
+            onClick={() => queryMovies(query as string)}
+            id="search-btn"
+            className="focus:outline-none"
+          >
             <PlayCircleIcon
               className={`text-yellow-400 w-12 ${
                 loading ? 'animate-spin' : ''
