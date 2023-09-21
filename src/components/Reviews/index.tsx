@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Review as ReviewModel } from '@/models/review.model';
+import { Review as ReviewModel } from '@/utils/models/review.model';
 import MovieService from '@/services/movie-service';
 import ReviewCard from '@/components/ReviewCard';
 

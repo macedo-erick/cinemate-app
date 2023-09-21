@@ -6,9 +6,9 @@ import MovieService from '@/services/movie-service';
 import MovieCard from '@/components/MovieCard';
 
 import { MagnifyingGlassIcon, PlayCircleIcon } from '@heroicons/react/24/solid';
-import { LastQueriesContext } from '@/context/LastQueriesContext';
-import { PageContext } from '@/context/PageContext';
-import { QueryContext } from '@/context/QueryContext';
+import { LastQueriesContext } from '@/utils/context/LastQueriesContext';
+import { PageContext } from '@/utils/context/PageContext';
+import { QueryContext } from '@/utils/context/QueryContext';
 
 const MovieSearch = () => {
   const [loading, setLoading] = useState(false);

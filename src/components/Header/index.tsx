@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import PopCorn from '@public/popcorn.svg';
+import PopCorn from '@images/popcorn.svg';
 import Link from 'next/link';
 
 const Header = () => {

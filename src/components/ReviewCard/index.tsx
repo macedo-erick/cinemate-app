@@ -1,4 +1,4 @@
-import { Review } from '@/models/review.model';
+import { Review } from '@/utils/models/review.model';
 import { Avatar, Rating } from '@mui/material';
 
 interface ReviewProps {

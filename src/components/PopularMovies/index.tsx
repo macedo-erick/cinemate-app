@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { Movie } from '@/models/movie';
+import { Movie } from '@/utils/models/movie';
 import MovieService from '@/services/movie-service';
 import MovieCard from '@/components/MovieCard';
 

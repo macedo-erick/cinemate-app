@@ -1,8 +1,8 @@
 'use client';
 
 import React, { createContext, Dispatch, useState } from 'react';
-import { Movie } from '@/models/movie';
-import { Page } from '@/models/page.model';
+import { Movie } from '@/utils/models/movie';
+import { Page } from '@/utils/models/page.model';
 
 export interface PageContextType {
   page?: Page<Movie>;

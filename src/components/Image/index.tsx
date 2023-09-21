@@ -1,4 +1,4 @@
-import { blurUrl, fallBackImage as defaultFallBack } from '@/util';
+import { blurUrl, fallBackImage as defaultFallBack } from '@/utils/util';
 import Image from 'next/image';
 import { useState } from 'react';
 
